@@ -140,15 +140,12 @@ class Exchange:
         self.books = {ticker: OrderBook(ticker) for ticker in self.tickers}
         self.history = []
         
-        # Connect to Supabase Safely
         self.supabase = None
-        if SUPABASE_AVAILABLE:
-            try:
-                self.supabase =create_client("https://gamavocddnnbubrfskkm.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhbWF2b2NkZG5uYnVicmZza2ttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMyMzA3MzcsImV4cCI6MjA5ODgwNjczN30.s5giBKE6N1QML9yrFvslpClvwtFHYcDUGgS19mTRexY")
-            except Exception:
-               except Exception as e:
-            st.error(f"DEBUG ERROR: {e}")
-
+        try:
+            
+            self.supabase = create_client("https://gamavocddnnbubrfskkm.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhbWF2b2NkZG5uYnVicmZza2ttIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMyMzA3MzcsImV4cCI6MjA5ODgwNjczN30.s5giBKE6N1QML9yrFvslpClvwtFHYcDUGgS19mTRexY")
+        except Exception as e:
+            st.error(f"DEBUG ERROR: {e}") # This will show the error on the website
     def get_next_match_id(self):
         return int(time.time() * 1000) + random.randint(1, 1000)
 
