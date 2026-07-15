@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import time
 import random
+from supabase import create_client, Client
+SUPABASE_AVAILABLE = True
 
 # ==========================================
 # 1. DATABASE SETUP
